@@ -24,7 +24,7 @@ def evaluate(representation, data):
         else:
             results.append((representation.similarity(x, y), sim))
     actual, expected = zip(*results)
-    print "OOV: ", oov
+    print("OOV: ", oov)
     return spearmanr(actual, expected)[0]
 
 
@@ -52,4 +52,4 @@ if __name__ == '__main__':
         rep = Embedding.load(args.vec_path, add_context=False)
     data = read_test_set(args.test_path)
     correlation = evaluate(rep, data)
-    print "Correlation: " + str(correlation)
+    print("Correlation: " + str(correlation))

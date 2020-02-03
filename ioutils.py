@@ -1,6 +1,6 @@
 import os
 import collections
-import cPickle as pickle
+import pickle
 from googlengram.indexing import get_word_indices
 
 def words_above_count(count_dir, year, min_count):

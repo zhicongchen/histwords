@@ -1,4 +1,7 @@
 # project specific
+embeddings
+__pycache__
+
 seaborn
 embeddings
 scikits-bootstrap

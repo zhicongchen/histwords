@@ -19,13 +19,13 @@ class SequentialEmbedding:
 
     def get_subembeds(self, words, normalize=True):
         embeds = collections.OrderedDict()
-        for year, embed in self.embeds.iteritems():
+        for year, embed in self.embeds.items():
             embeds[year] = embed.get_subembed(words, normalize=normalize)
         return SequentialEmbedding(embeds)
 
     def get_time_sims(self, word1, word2):
        time_sims = collections.OrderedDict()
-       for year, embed in self.embeds.iteritems():
+       for year, embed in self.embeds.items():
            time_sims[year] = embed.similarity(word1, word2)
        return time_sims
 
@@ -42,7 +42,7 @@ class SequentialEmbedding:
         for year in range(start_year, start_year + num_years):
             embed = self.embeds[year]
             year_closest = embed.closest(word, n=n*10)
-            for score, neigh in year_closest.iteritems():
+            for score, neigh in year_closest.items():
                 closest[neigh] += score
         return sorted(closest, key = lambda word : closest[word], reverse=True)[0:n]
 
@@ -53,7 +53,7 @@ class SequentialEmbedding:
                 word_set = word_set.union(set(random.sample(self.embeds.values()[-1].iw, num_rand)))
             word_list = list(word_set)
         year_subembeds = collections.OrderedDict()
-        for year,embed in self.embeds.iteritems():
+        for year,embed in self.embeds.items():
             year_subembeds[year] = embed.get_subembed(word_list)
         return SequentialEmbedding.from_ordered_dict(year_subembeds)
 

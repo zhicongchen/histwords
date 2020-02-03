@@ -19,7 +19,7 @@ def load_vocabulary(mat, path):
     if os.path.isfile(path.split(".")[0] + "-index.pkl"):
         path = path.split(".")[0] + "-index.pkl"
     else:
-        print "Could not find local index. Attempting to load directory wide index..."
+        print("Could not find local index. Attempting to load directory wide index...")
         path = "/".join(path.split("/")[:-1]) + "/index.pkl"
     index = util.load_pickle(path)
     vocab = sorted(index, key = lambda word : index[word])
