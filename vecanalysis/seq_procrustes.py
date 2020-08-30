@@ -9,18 +9,18 @@ def align_years(years, rep_type, in_dir, out_dir, count_dir, min_count, **rep_ar
     first_iter = True
     base_embed = None
     for year in years:
-        print "Loading year:", year
+        print("Loading year:", year)
         year_embed =  create_representation(rep_type, in_dir + str(year), **rep_args)
         year_words = words_above_count(count_dir, year, min_count)
         year_embed.get_subembed(year_words)
-        print "Aligning year:", year
+        print("Aligning year:", year)
         if first_iter:
             aligned_embed = year_embed
             first_iter = False
         else:
             aligned_embed = alignment.smart_procrustes_align(base_embed, year_embed)
         base_embed = aligned_embed
-        print "Writing year:", year
+        print("Writing year:", year)
         foutname = out_dir + str(year)
         np.save(foutname + "-w.npy",aligned_embed.m)
         write_pickle(aligned_embed.iw, foutname + "-vocab.pkl")

@@ -1,6 +1,8 @@
 # project specific
 embeddings
 __pycache__
+.vscode
+.idea
 
 seaborn
 embeddings
